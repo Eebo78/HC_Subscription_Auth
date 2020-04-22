@@ -44,7 +44,7 @@ namespace HC.GraphQL.Api
             .AddIdentityServerAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme, options =>
             {
                 options.Authority = "https://localhost:5001"; //TODO: Make configurable
-                options.ApiName = "resourceapi"; //TODO: Change this to correct api name ind Config.cs for AutServer
+                options.ApiName = "api1"; //TODO: Change this to correct api name ind Config.cs for AutServer
                 options.RequireHttpsMetadata = false;
 
                 options.ForwardDefaultSelector = context =>

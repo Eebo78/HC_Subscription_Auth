@@ -1,0 +1,37 @@
+{
+  "name": "gqltest",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@types/graphql": "^14.5.0",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.13",
+    "apollo-link-context": "^1.0.20",
+    "apollo-link-http": "^1.5.16",
+    "apollo-link-ws": "^1.0.20",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "oidc-client": "^1.10.1",
+    "subscriptions-transport-ws": "^0.9.16",
+    "vue": "^2.6.11",
+    "vue-apollo": "^3.0.3",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.1",
+    "vue-router": "^3.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/webpack-env": "^1.14.1",
+    "@types/ws": "^7.2.4",
+    "@vue/cli-plugin-router": "~4.3.0",
+    "@vue/cli-plugin-typescript": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "typescript": "~3.7.0-beta",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
