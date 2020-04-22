@@ -1,16 +1,20 @@
-using System;
 using HotChocolate;
 using HotChocolate.AspNetCore;
-using IdentityServer4.AccessTokenValidation;
+using HotChocolate.Execution;
+using HotChocolate.Server;
 using IdentityModel.AspNetCore.OAuth2Introspection;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using HotChocolate.Server;
+using System;
+using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
 using static HC.GraphQL.Api.RootTypes;
 
 namespace HC.GraphQL.Api
@@ -87,6 +91,16 @@ namespace HC.GraphQL.Api
                 );
 
             services.AddSingleton<ISocketConnectionInterceptor<HttpContext>, AuthenticationSocketInterceptor>();
+            services.AddQueryRequestInterceptor((
+                HttpContext context,
+                IQueryRequestBuilder requestBuilder,
+                CancellationToken _) =>
+            {
+                requestBuilder.TryAddProperty(nameof(HttpContext), context);
+                requestBuilder.TryAddProperty(nameof(ClaimsPrincipal), context.GetUser());
+
+                return Task.CompletedTask;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
