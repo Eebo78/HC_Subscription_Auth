@@ -21,6 +21,8 @@
         <div>Open query result: {{ data.hello }}</div>
 
         <div>Open subscription result: {{ subresult }}</div>
+
+        <div>Private subscription result: {{ privateSubresult }}</div>
       </div>
       <!-- No result -->
       <div v-else class="no-result apollo">No result :(</div>
